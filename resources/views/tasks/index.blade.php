@@ -111,7 +111,7 @@
            <label for="start" class=" control-label">Dia y Hora de inicio:</label>
             
               <div class="col-sm-12">
-               <input type="tetx" id="start" disabled> 
+               <input type="text" id="start" disabled> 
                </div>
             </div>
             <div class="form-group">
@@ -141,6 +141,9 @@
           
         </div>
       </div>
+    </div>
+    <div align="center" width="500" height="300">
+    <img width="500" height="300" src="/fulbo/storage/app/public/canchas/{{$imagen}}" alt="">
     </div>
 <script>
     

@@ -15,7 +15,10 @@ class ControladorDePaginas extends Controller
     
     
     public function abrir($slug){
-        
         return view($slug);
+    }
+
+    public function canchas(){
+        return view('/canchas','UserController@index')->name('canchas.index');
     }
 }

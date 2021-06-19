@@ -13,6 +13,8 @@ class CanchasController extends Controller
     /**     * Display a listing of the resource.     *     * @return \Illuminate\Http\Response     */
     public function index(Request $request,$id)
     {   
+        //dd($request);
+        //dd($id);
         if ($request->ajax()) {
             
             $data = Cancha::select('canchas.id','canchas.nombre_del_predio','canchas.detalles_de_canchas','canchas.user_id')
@@ -36,7 +38,10 @@ class CanchasController extends Controller
                 ->join('users','users.id','=','canchas.user_id')
                 ->where('canchas.user_id','=',$id)
                 ->get();
-        return view('canchasporid')->with('var',$var[0]->nombre_del_predio);
+        if(count($var)!=0)
+            return view('canchasporid')->with('var',$var[0]->nombre_del_predio);
+        else
+            return view('canchas');
     }
     
     public function store(){

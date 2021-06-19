@@ -28,7 +28,7 @@ class TasksController extends Controller
     {
         //dd($id);
         //$tasks = Task::get();
-        $tasks=Task::select('tasks.title','tasks.start','tasks.end','canchas.nombre_del_predio','canchas.detalles_de_canchas','tasks.id_cancha')
+        $tasks=Task::select('tasks.title','tasks.start','tasks.end','canchas.nombre_del_predio','canchas.detalles_de_canchas','tasks.id_cancha','canchas.imagen')
             ->join('canchas','canchas.id','=','tasks.id_cancha')
                 ->where('tasks.id_cancha','=',$id)
                 ->get();
@@ -37,15 +37,18 @@ class TasksController extends Controller
         
         if(count($tasks) == 0){
             //dd($id);
-            $rta= Cancha::select('canchas.nombre_del_predio','canchas.detalles_de_canchas')->where('id','=',$id)->get();
+            $rta= Cancha::select('canchas.nombre_del_predio','canchas.detalles_de_canchas','canchas.imagen')->where('id','=',$id)->get();
             //$var="error";
             //return view('canchas',compact('var'));
             //dd($rta[0]->nombre_del_predio);
-            return view('tasks.index',compact('var'))->with('id',$id)->with('nom',$rta[0]->nombre_del_predio)->with('det',$rta[0]->detalles_de_canchas);
-            //header('Location: http://localhost/ProyectFinal/public/canchas');
+            //dd(view('tasks.index',compact('var')));
+            //asi estaba antes, me daba problema con la task 7
+            //return view('tasks.index',compact('var'))->with('id',$id)->with('nom',$rta[0]->nombre_del_predio)->with('det',$rta[0]->detalles_de_canchas);
+            return view('tasks.index')->with('id',$id)->with('nom',$rta[0]->nombre_del_predio)->with('det',$rta[0]->detalles_de_canchas)->with('imagen',$rta[0]->imagen);
+            //header('Location: http://localhost:8080/fulbo/public/canchas');
             //exit();
         }else{
-        return view('tasks.index', compact('tasks'))->with('nom',$tasks[0]->nombre_del_predio)->with('det',$tasks[0]->detalles_de_canchas)->with('id',$tasks[0]->id_cancha);
+        return view('tasks.index', compact('tasks'))->with('nom',$tasks[0]->nombre_del_predio)->with('det',$tasks[0]->detalles_de_canchas)->with('id',$tasks[0]->id_cancha)->with('imagen',$tasks[0]->imagen);
         }
     }
 
@@ -138,19 +141,16 @@ class TasksController extends Controller
         $user=Cancha::select('canchas.nombre_del_predio','canchas.detalles_de_canchas','tasks.start')->join('tasks','canchas.id','=','tasks.id_cancha')->where('tasks.title','=',Auth::user()->name)->orderby('tasks.id','desc')->get();
         //dd($user);
         
-        $pdf = PDF::loadView('descargar-pdf',compact('user'));
+        $pdf = \PDF::loadView('descargar-pdf',compact('user'));
         
         
         Mail::send('sending', $data, function($message) use($data,$pdf){
             $message->to('josemaria.terrazas@gmail.com','hola');
-            $message->from('josemaria.terrazas@gmail.com')->subject ('¡Reservaste tu cancha con 5inco!');
+            $message->from('josemaria.terrazas@gmail.com')->subject('¡Reservaste tu cancha con 5inco!');
             $message->attachData($pdf->output(), 'reserva.pdf');
             });
-        
-        
         return response()->json(['success'=>'ok']);
         //return $pdf->stream('reserva.pdf');
-            
     }
 
 }

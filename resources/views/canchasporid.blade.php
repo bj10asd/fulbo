@@ -2,30 +2,30 @@
 @section('title','Canchas')
 
 @section('content')
-   <!-- Font -->
-   <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"> 
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet"> 
     <br><br>
     <div class="container">
-      <div style="font-family: 'Indie Flower', cursive;">
-  <!--<div style="font-family: 'Press Start 2P', cursive;"> -->
-
-  <h1 align="center">
-  {{ $var }}
-  </h1>
-  </div>
-      <table class="table table-bordered data-table1">
-          <thead>
+        <div style="font-family: 'Indie Flower', cursive;">
+        <!--<div style="font-family: 'Press Start 2P', cursive;"> -->
+            <h1 align="center">
+                {{ $var }}
+            </h1>
+        </div>
+        <table class="table table-bordered data-table1">
+            <thead>
                 <tr>
-                 <th>Nro</th>
-                  <th>id</th>
-                  <th>Nombre</th>
-                  <th>Detalle</th>
-                  <th>User_id</th>
-                  <th>Acción</th>
+                    <th>Nro</th>
+                    <th>id</th>
+                    <th>Nombre</th>
+                    <th>Detalle</th>
+                    <th>User_id</th>
+                    
+                    <th>Acción</th>
                 </tr>
-          </thead>
-          <tbody></tbody>
-      </table>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 
     <script type="text/javascript">
@@ -52,10 +52,9 @@
                 
             });
             
-            
             $('body').on('click', '.editProduct', function () {
                 var product_id = $(this).data('id');
-                var newLink = "http://localhost/ProyectFinal/public/tasks/"+product_id;
+                var newLink = "http://localhost:8080/fulbo/public/tasks/"+product_id;
                 //alert(newLink);
                 //location.href="tasks/"+product_id;
                 

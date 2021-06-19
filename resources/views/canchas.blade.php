@@ -57,11 +57,10 @@
             
             
             $('body').on('click', '.editProduct', function () {
-                
-               var product_id = $(this).data('id');
-               location.href="http://localhost/ProyectFinal/public/canchasporid/"+product_id
-                
-            });
+                //alert("ejecutando esto");
+                var product_id = $(this).data('id');
+                location.href="http://localhost:8080/fulbo/public/canchasporid/"+product_id
+             });
             
         });
         

@@ -8,7 +8,7 @@
        @if(Auth::user())
         @if(Auth::user()->hasRole('canchero'))
             <li class="nav-item">
-                <a class="nav-link" href="{{ url($item['pagina']) }}">{{ $item['etiqueta'] }} </a>
+                <a class="nav-link" href="{{ url($item['pagina'].'/'.Auth::id()) }}">{{ $item['etiqueta'] }} </a>
             </li>
         @endif
        @endif

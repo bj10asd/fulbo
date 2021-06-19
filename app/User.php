@@ -81,5 +81,4 @@ class User extends Authenticatable
     public function canchas(){
         return $this->hasMany(Cancha::class);
     }
-    
 }

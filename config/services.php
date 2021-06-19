@@ -32,6 +32,6 @@ return [
     'facebook' => [
         'client_id' => '669194963487189',
         'client_secret' => '62fbbf7a01dbb94b97d09a8979c80c46',
-        'redirect' => 'http://localhost/ProyectFinal/public/auth/facebook/callback']
+        'redirect' => 'http://localhost:8080/fulbo/public/auth/facebook/callback']
 
 ];

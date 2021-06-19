@@ -15,7 +15,7 @@ class Cancha extends Model
 
     protected $fillable = [
 
-        'nombre_del_predio', 'detalles_de_canchas', 'user_id'
+        'nombre_del_predio', 'detalles_de_canchas', 'user_id', 'imagen'
 
     ];
     

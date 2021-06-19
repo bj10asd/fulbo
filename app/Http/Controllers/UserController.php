@@ -8,7 +8,7 @@ use Barryvdh\DomPDF\Facade as PDF;
 use App\Role;
 
 use Illuminate\Support\Facades\View;
-
+//corresponde a canchas.blade
 class UserController extends Controller
 {
     public function index(Request $request)
